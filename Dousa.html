@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دوسة - Dousa Shoes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Bebas+Neue&family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue-deep: #0a0e2e;
+            --blue-mid: #0d1a5c;
+            --blue-bright: #1a3aff;
+            --blue-electric: #2979ff;
+            --blue-glow: #4fc3f7;
+            --white: #ffffff;
+            --white-soft: #e8f0ff;
+            --accent: #00b4ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--blue-deep);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+            /* ======= ANIMATED BACKGROUND ======= */
+            body::before {
+                content: '';
+                position: fixed;
+                inset: 0;
+                background: radial-gradient(ellipse at 20% 20%, rgba(41,121,255,0.15) 0%, transparent 60%), radial-gradient(ellipse at 80% 80%, rgba(0,180,255,0.1) 0%, transparent 60%), radial-gradient(ellipse at 50% 50%, rgba(10,14,46,1) 0%, #050818 100%);
+                z-index: -2;
+            }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: float linear infinite;
+            opacity: 0.4;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.4;
+            }
+
+            90% {
+                opacity: 0.2;
+            }
+
+            to {
+                transform: translateY(-10vh) translateX(30px);
+                opacity: 0;
+            }
+        }
+
+        /* ======= HEADER / NAV ======= */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 16px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(10,14,46,0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(41,121,255,0.2);
+        }
+
+        .logo-nav {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+        }
+
+        .logo-text-wrap {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-ar {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
+
+        .logo-en {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: var(--accent);
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+            nav a {
+                color: var(--white-soft);
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 600;
+                letter-spacing: 1px;
+                transition: color 0.3s;
+                position: relative;
+            }
+
+                nav a::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -4px;
+                    right: 0;
+                    width: 0;
+                    height: 2px;
+                    background: var(--accent);
+                    transition: width 0.3s;
+                }
+
+                nav a:hover {
+                    color: var(--accent);
+                }
+
+                    nav a:hover::after {
+                        width: 100%;
+                    }
+
+        /* ======= GENDER SECTIONS ======= */
+        .gender-section {
+            padding: 80px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gender-section-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+            .gender-section-inner.reverse {
+                direction: ltr;
+            }
+
+                .gender-section-inner.reverse .gender-info {
+                    direction: rtl;
+                }
+
+                .gender-section-inner.reverse .gender-cards {
+                    direction: rtl;
+                }
+
+        .gender-big-icon {
+            font-size: 120px;
+            text-align: center;
+            display: block;
+            line-height: 1;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 30px rgba(41,121,255,0.3));
+            animation: icon-float 3s ease-in-out infinite;
+        }
+
+        @keyframes icon-float {
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .gender-cards {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(41,121,255,0.12);
+            border-radius: 4px;
+            padding: 36px;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .gender-cards.women-card {
+                border-color: rgba(255,100,180,0.15);
+            }
+
+            .gender-cards.kids-card {
+                border-color: rgba(255,200,50,0.15);
+            }
+
+            .gender-cards.men-card {
+                border-color: rgba(60,220,150,0.15);
+            }
+
+            .gender-cards::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background: linear-gradient(90deg, transparent, var(--accent-color, var(--accent)), transparent);
+            }
+
+            .gender-cards.women-card {
+                --accent-color: #ff64b4;
+            }
+
+            .gender-cards.kids-card {
+                --accent-color: #ffc832;
+            }
+
+            .gender-cards.men-card {
+                --accent-color: #3cdc96;
+            }
+
+        .gender-label-tag {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 2px;
+            font-size: 11px;
+            letter-spacing: 3px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            background: rgba(41,121,255,0.1);
+            border: 1px solid rgba(41,121,255,0.3);
+            color: var(--accent);
+        }
+
+            .gender-label-tag.women {
+                background: rgba(255,100,180,0.1);
+                border-color: rgba(255,100,180,0.3);
+                color: #ff64b4;
+            }
+
+            .gender-label-tag.kids {
+                background: rgba(255,200,50,0.1);
+                border-color: rgba(255,200,50,0.3);
+                color: #ffc832;
+            }
+
+            .gender-label-tag.men {
+                background: rgba(60,220,150,0.1);
+                border-color: rgba(60,220,150,0.3);
+                color: #3cdc96;
+            }
+
+        .gender-title {
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 900;
+            margin-bottom: 14px;
+            line-height: 1.1;
+        }
+
+        .gender-desc {
+            font-size: 14px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.9;
+            font-weight: 300;
+            margin-bottom: 28px;
+        }
+
+        .gender-sub-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .sub-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 2px;
+            padding: 18px 14px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+            .sub-card:hover {
+                transform: translateY(-4px);
+                border-color: rgba(0,180,255,0.3);
+                background: rgba(0,180,255,0.05);
+            }
+
+            .sub-card.pink-hover:hover {
+                border-color: rgba(255,100,180,0.3);
+                background: rgba(255,100,180,0.05);
+            }
+
+            .sub-card.yellow-hover:hover {
+                border-color: rgba(255,200,50,0.3);
+                background: rgba(255,200,50,0.05);
+            }
+
+            .sub-card.green-hover:hover {
+                border-color: rgba(60,220,150,0.3);
+                background: rgba(60,220,150,0.05);
+            }
+
+        .sub-card-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .sub-card-name {
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .gender-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(41,121,255,0.2), transparent);
+            margin: 0 60px;
+        }
+
+        @media (max-width: 768px) {
+            .gender-section {
+                padding: 50px 20px;
+            }
+
+            .gender-section-inner, .gender-section-inner.reverse {
+                grid-template-columns: 1fr;
+                direction: rtl;
+            }
+
+            .gender-big-icon {
+                font-size: 80px;
+            }
+
+            .gender-sub-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gender-divider {
+                margin: 0 20px;
+            }
+        }
+
+        /* ======= HERO ======= */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 40px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(41,121,255,0.15);
+            animation: pulse-ring 4s ease-in-out infinite;
+        }
+
+            .hero-bg-ring:nth-child(1) {
+                width: 400px;
+                height: 400px;
+                animation-delay: 0s;
+            }
+
+            .hero-bg-ring:nth-child(2) {
+                width: 600px;
+                height: 600px;
+                animation-delay: 0.5s;
+            }
+
+            .hero-bg-ring:nth-child(3) {
+                width: 800px;
+                height: 800px;
+                animation-delay: 1s;
+            }
+
+            .hero-bg-ring:nth-child(4) {
+                width: 1000px;
+                height: 1000px;
+                animation-delay: 1.5s;
+            }
+
+        @keyframes pulse-ring {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.1;
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(41,121,255,0.15);
+            border: 1px solid rgba(41,121,255,0.4);
+            border-radius: 30px;
+            padding: 8px 20px;
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 32px;
+            animation: fadeInDown 0.8s ease both;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .hero-title-ar {
+            font-size: clamp(80px, 14vw, 160px);
+            font-weight: 900;
+            line-height: 1;
+            background: linear-gradient(135deg, #fff 0%, #4fc3f7 50%, #2979ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease 0.2s both;
+            text-shadow: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title-en {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(40px, 7vw, 80px);
+            letter-spacing: 12px;
+            color: rgba(255,255,255,0.15);
+            margin-top: -10px;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            color: var(--white-soft);
+            margin: 24px 0 48px;
+            letter-spacing: 2px;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.5s both;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--blue-bright), var(--accent));
+            color: white;
+            padding: 16px 40px;
+            border-radius: 4px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 30px rgba(41,121,255,0.4);
+            clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+        }
+
+            .btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 0 50px rgba(41,121,255,0.6);
+            }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 16px 40px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 4px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+        }
+
+            .btn-secondary:hover {
+                background: rgba(41,121,255,0.1);
+                border-color: var(--accent);
+                color: var(--accent);
+            }
+
+        .hero-shoe-display {
+            margin-top: 60px;
+            position: relative;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .big-footprint {
+            width: 200px;
+            opacity: 0.08;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            animation: breathe 3s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%,100% {
+                transform: translate(-50%,-50%) scale(1);
+                opacity: 0.08;
+            }
+
+            50% {
+                transform: translate(-50%,-50%) scale(1.1);
+                opacity: 0.12;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ======= DIVIDER ======= */
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(41,121,255,0.5), var(--accent), rgba(41,121,255,0.5), transparent);
+            margin: 0;
+        }
+
+        /* ======= MARQUEE ======= */
+        .marquee-wrap {
+            background: rgba(41,121,255,0.08);
+            border-top: 1px solid rgba(41,121,255,0.2);
+            border-bottom: 1px solid rgba(41,121,255,0.2);
+            padding: 14px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 60px;
+            animation: marquee 20s linear infinite;
+            white-space: nowrap;
+        }
+
+        .marquee-item {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: rgba(255,255,255,0.4);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .marquee-dot {
+            color: var(--accent);
+            font-size: 20px;
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ======= CATEGORIES ======= */
+        .section {
+            padding: 100px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            letter-spacing: 5px;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(41,121,255,0.15);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+            .card::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(135deg, rgba(41,121,255,0.05), transparent);
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+
+            .card:hover {
+                transform: translateY(-8px);
+                border-color: rgba(0,180,255,0.5);
+                box-shadow: 0 20px 60px rgba(41,121,255,0.2), 0 0 0 1px rgba(0,180,255,0.1);
+            }
+
+                .card:hover::before {
+                    opacity: 1;
+                }
+
+        .card-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .card-tag {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 5px 14px;
+            background: rgba(41,121,255,0.15);
+            border: 1px solid rgba(41,121,255,0.3);
+            border-radius: 2px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* ======= FEATURES BAND ======= */
+        .features-band {
+            background: linear-gradient(135deg, rgba(41,121,255,0.08), rgba(0,180,255,0.04));
+            border-top: 1px solid rgba(41,121,255,0.15);
+            border-bottom: 1px solid rgba(41,121,255,0.15);
+            padding: 60px;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .feature-item {
+            position: relative;
+        }
+
+        .feature-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 72px;
+            line-height: 1;
+            background: linear-gradient(135deg, rgba(41,121,255,0.3), rgba(0,180,255,0.1));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .feature-label {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.7);
+            margin-top: -10px;
+        }
+
+        .feature-sub {
+            font-size: 11px;
+            color: rgba(255,255,255,0.35);
+            margin-top: 4px;
+            font-weight: 300;
+        }
+
+        /* ======= LOCATION ======= */
+        .location-section {
+            padding: 100px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-top: 60px;
+        }
+
+        .location-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(41,121,255,0.15);
+            border-radius: 2px;
+            padding: 40px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+            .info-row:last-child {
+                border-bottom: none;
+            }
+
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(41,121,255,0.1);
+            border: 1px solid rgba(41,121,255,0.2);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .info-text {
+            flex: 1;
+        }
+
+        .info-label {
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            font-size: 15px;
+            color: var(--white);
+            font-weight: 400;
+            line-height: 1.6;
+            direction: rtl;
+        }
+
+        .phone-link {
+            color: var(--white);
+            text-decoration: none;
+            display: block;
+            transition: color 0.2s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+            .phone-link:hover {
+                color: var(--accent);
+            }
+
+        .map-embed {
+            width: 100%;
+            height: 380px;
+            border-radius: 2px;
+            border: 1px solid rgba(41,121,255,0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+            .map-embed iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+                filter: invert(90%) hue-rotate(180deg) saturate(1.2) brightness(0.8);
+            }
+
+        .map-overlay-label {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(10,14,46,0.9);
+            border: 1px solid rgba(41,121,255,0.3);
+            padding: 8px 16px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 2px;
+        }
+
+        .map-open-btn {
+            display: block;
+            margin-top: 16px;
+            text-align: center;
+            padding: 14px;
+            background: linear-gradient(135deg, rgba(41,121,255,0.2), rgba(0,180,255,0.1));
+            border: 1px solid rgba(41,121,255,0.3);
+            color: var(--accent);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+            .map-open-btn:hover {
+                background: rgba(41,121,255,0.3);
+                box-shadow: 0 0 20px rgba(41,121,255,0.3);
+            }
+
+        /* ======= GENDER SECTIONS ======= */
+        .gender-section {
+            padding: 80px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gender-section-inner {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+            .gender-section-inner.reverse {
+                grid-template-columns: 2fr 1fr;
+            }
+
+                .gender-section-inner.reverse .gender-info {
+                    order: 2;
+                }
+
+                .gender-section-inner.reverse .gender-cards {
+                    order: 1;
+                }
+
+        .gender-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gender-big-icon {
+            font-size: 120px;
+            line-height: 1;
+            filter: drop-shadow(0 0 30px rgba(0,180,255,0.5));
+            animation: float-icon 4s ease-in-out infinite;
+        }
+
+            .gender-big-icon.pink-glow {
+                filter: drop-shadow(0 0 30px rgba(255,100,180,0.5));
+            }
+
+            .gender-big-icon.green-glow {
+                filter: drop-shadow(0 0 30px rgba(60,220,150,0.5));
+            }
+
+        @keyframes float-icon {
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        .gender-ring {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,180,255,0.15);
+            animation: spin-slow 15s linear infinite;
+        }
+
+            .gender-ring.pink {
+                border-color: rgba(255,100,180,0.15);
+            }
+
+            .gender-ring.green {
+                border-color: rgba(60,220,150,0.15);
+            }
+
+            .gender-ring::before {
+                content: '';
+                position: absolute;
+                top: -3px;
+                left: 50%;
+                width: 6px;
+                height: 6px;
+                background: var(--accent);
+                border-radius: 50%;
+                transform: translateX(-50%);
+            }
+
+            .gender-ring.pink::before {
+                background: #ff64b4;
+            }
+
+            .gender-ring.green::before {
+                background: #3cdc96;
+            }
+
+        @keyframes spin-slow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .gender-info {
+        }
+
+        .gender-label-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 2px;
+            font-size: 11px;
+            letter-spacing: 3px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+            .gender-label-tag.women {
+                background: rgba(255,100,180,0.1);
+                border: 1px solid rgba(255,100,180,0.3);
+                color: #ff64b4;
+            }
+
+            .gender-label-tag.kids {
+                background: rgba(255,200,50,0.1);
+                border: 1px solid rgba(255,200,50,0.3);
+                color: #ffc832;
+            }
+
+            .gender-label-tag.men {
+                background: rgba(60,220,150,0.1);
+                border: 1px solid rgba(60,220,150,0.3);
+                color: #3cdc96;
+            }
+
+        .gender-title {
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 900;
+            margin-bottom: 14px;
+            line-height: 1.1;
+        }
+
+        .gender-desc {
+            font-size: 14px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.9;
+            font-weight: 300;
+            margin-bottom: 28px;
+        }
+
+        .gender-sub-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .sub-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 2px;
+            padding: 18px 14px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+            .sub-card:hover {
+                transform: translateY(-4px);
+                border-color: rgba(0,180,255,0.3);
+                background: rgba(0,180,255,0.05);
+            }
+
+            .sub-card.pink-hover:hover {
+                border-color: rgba(255,100,180,0.3);
+                background: rgba(255,100,180,0.05);
+            }
+
+            .sub-card.yellow-hover:hover {
+                border-color: rgba(255,200,50,0.3);
+                background: rgba(255,200,50,0.05);
+            }
+
+            .sub-card.green-hover:hover {
+                border-color: rgba(60,220,150,0.3);
+                background: rgba(60,220,150,0.05);
+            }
+
+        .sub-card-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .sub-card-name {
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .gender-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(41,121,255,0.2), transparent);
+            margin: 0 60px;
+            width: calc(100% - 120px);
+        }
+
+        @media (max-width: 768px) {
+            .gender-section {
+                padding: 50px 20px;
+            }
+
+            .gender-section-inner,
+            .gender-section-inner.reverse {
+                grid-template-columns: 1fr;
+            }
+
+                .gender-section-inner.reverse .gender-info {
+                    order: 1;
+                }
+
+                .gender-section-inner.reverse .gender-cards {
+                    order: 2;
+                }
+
+            .gender-big-icon {
+                font-size: 80px;
+            }
+
+            .gender-sub-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gender-divider {
+                margin: 0 20px;
+                width: calc(100% - 40px);
+            }
+        }
+
+        /* ======= MANAGEMENT ======= */
+        .mgmt-section {
+            background: rgba(255,255,255,0.02);
+            border-top: 1px solid rgba(41,121,255,0.1);
+            padding: 60px;
+            text-align: center;
+        }
+
+        .mgmt-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .mgmt-label {
+            font-size: 11px;
+            letter-spacing: 5px;
+            color: rgba(255,255,255,0.3);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        .mgmt-names {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .mgmt-person {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mgmt-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(41,121,255,0.3), rgba(0,180,255,0.2));
+            border: 1px solid rgba(41,121,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .mgmt-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .mgmt-role {
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* ======= FOOTER ======= */
+        footer {
+            background: #050818;
+            border-top: 1px solid rgba(41,121,255,0.15);
+            padding: 40px 60px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 40px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .footer-tagline {
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: rgba(255,255,255,0.3);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-copy {
+            margin-top: 24px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.15);
+        }
+
+        /* ======= SCROLL LINE ======= */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--blue-bright), var(--accent));
+            z-index: 1000;
+            transition: width 0.1s;
+            box-shadow: 0 0 8px rgba(0,180,255,0.8);
+        }
+
+        /* ======= GLOW LINES ======= */
+        .glow-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(41,121,255,0.6) 30%, var(--accent) 50%, rgba(41,121,255,0.6) 70%, transparent 100%);
+            box-shadow: 0 0 10px rgba(0,180,255,0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 100px 20px 60px;
+            }
+
+            .section, .location-section {
+                padding: 60px 20px;
+            }
+
+            .location-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .features-band {
+                padding: 40px 20px;
+            }
+
+            .mgmt-section {
+                padding: 40px 20px;
+            }
+
+            footer {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scroll progress -->
+    <div class="scroll-progress" id="progress"></div>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo-nav">
+            <svg class="logo-icon" viewBox="0 0 42 42" fill="none">
+                <rect width="42" height="42" rx="3" fill="rgba(41,121,255,0.1)" stroke="rgba(41,121,255,0.4)" stroke-width="1" />
+                <!-- Boot sole icon -->
+                <ellipse cx="21" cy="26" rx="13" ry="9" fill="none" stroke="rgba(0,180,255,0.8)" stroke-width="1.5" />
+                <line x1="15" y1="20" x2="27" y2="20" stroke="rgba(0,180,255,0.5)" stroke-width="1" />
+                <line x1="13" y1="24" x2="29" y2="24" stroke="rgba(0,180,255,0.5)" stroke-width="1" />
+                <line x1="15" y1="28" x2="27" y2="28" stroke="rgba(0,180,255,0.5)" stroke-width="1" />
+                <line x1="17" y1="18" x2="17" y2="32" stroke="rgba(0,180,255,0.4)" stroke-width="1" />
+                <line x1="21" y1="17" x2="21" y2="33" stroke="rgba(0,180,255,0.4)" stroke-width="1" />
+                <line x1="25" y1="18" x2="25" y2="32" stroke="rgba(0,180,255,0.4)" stroke-width="1" />
+                <circle cx="21" cy="26" r="3" fill="rgba(0,180,255,0.3)" stroke="rgba(0,180,255,0.8)" stroke-width="1" />
+                <!-- toe cap -->
+                <path d="M21 17 C24 14, 30 14, 32 17" stroke="rgba(0,180,255,0.6)" stroke-width="1.5" fill="none" />
+            </svg>
+            <div class="logo-text-wrap">
+                <span class="logo-ar">دوسة</span>
+                <span class="logo-en">DOUSA</span>
+            </div>
+        </div>
+        <nav>
+            <a href="#about">عن المحل</a>
+            <a href="#women">حريمي</a>
+            <a href="#men">شبابي</a>
+            <a href="#kids">أطفال</a>
+            <a href="#location">الموقع</a>
+            <a href="#contact">تواصل معنا</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg-ring"></div>
+        <div class="hero-bg-ring"></div>
+        <div class="hero-bg-ring"></div>
+        <div class="hero-bg-ring"></div>
+
+        <div class="hero-badge">
+            <span>⚡</span>
+            <span>Casual & Sport Shoes</span>
+        </div>
+
+        <h1 class="hero-title-ar">دوسة</h1>
+        <div class="hero-title-en">DOUSA</div>
+        <p class="hero-subtitle">أحذية رياضية وكاجوال بأعلى جودة · الشرقية · مركز ههيا</p>
+
+        <div class="hero-cta">
+            <a href="#location" class="btn-primary">📍 موقعنا</a>
+            <a href="#categories" class="btn-secondary">تصفح المنتجات</a>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-wrap">
+        <div class="marquee-track">
+            <span class="marquee-item">CASUAL SHOES <span class="marquee-dot">✦</span></span>
+            <span class="marquee-item">SPORT SHOES <span class="marquee-dot">✦</span></span>
+            <span class="marquee-item">أحذية حريمي <span class="marquee-dot">✦</span></span>
+            <span class="marquee-item">أحذية شبابي <span class="marquee-dot">✦</span></span>
+            <span class="marquee-item">أحذية أطفال <span class="marquee-dot">✦</span></span>
+            <span class="marquee-item">DOUSA · دوسة <span class="marquee-dot">✦</span></span>
+            <span class="marquee-item">ههيا · الشرقية <span class="marquee-dot">✦</span></span>
+            <!-- duplicate for seamless loop -->
+            <span class="marquee-item">CASUAL SHOES <span class="marquee-dot">✦</span></span>
+            <span class="marquee-item">SPORT SHOES <span class="marquee-dot">✦</span></span>
+            <span class="marquee-item">أحذية حريمي <span class="marquee-dot">✦</span></span>
+            <span class="marquee-item">أحذية شبابي <span class="marquee-dot">✦</span></span>
+            <span class="marquee-item">أحذية أطفال <span class="marquee-dot">✦</span></span>
+            <span class="marquee-item">DOUSA · دوسة <span class="marquee-dot">✦</span></span>
+            <span class="marquee-item">ههيا · الشرقية <span class="marquee-dot">✦</span></span>
+        </div>
+    </div>
+
+    <!-- FEATURES BAND -->
+    <div class="features-band" id="about">
+        <div class="features-grid">
+            <div class="feature-item">
+                <span class="feature-num">100%</span>
+                <div class="feature-label">جودة عالية</div>
+                <div class="feature-sub">PREMIUM QUALITY</div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-num">2X</span>
+                <div class="feature-label">أصناف متنوعة</div>
+                <div class="feature-sub">CASUAL & SPORT</div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-num">∞</span>
+                <div class="feature-label">خيارات للجميع</div>
+                <div class="feature-sub">ALL SIZES & STYLES</div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-num">★</span>
+                <div class="feature-label">خدمة مميزة</div>
+                <div class="feature-sub">TOP SERVICE</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION HEADER -->
+    <div class="section" style="padding-bottom: 20px;">
+        <div class="section-header">
+            <span class="section-label">Our Collections</span>
+            <h2 class="section-title">تشكيلاتنا المميزة</h2>
+        </div>
+    </div>
+
+    <!-- WOMEN SECTION -->
+    <div class="gender-section" id="women">
+        <div class="gender-section-inner">
+            <div class="gender-cards women-card">
+                <span class="gender-label-tag women">WOMEN · حريمي</span>
+                <h3 class="gender-title">قسم الحريمي 👠</h3>
+                <p class="gender-desc">
+                    تشكيلة أنيقة ومتنوعة من أحذية السيدات تجمع بين الراحة والموضة.
+                    من أحذية الإسبورت العصرية للإطلالات اليومية، إلى الكاجوال الشيك
+                    المناسب لكل مناسبة.
+                </p>
+                <div class="gender-sub-cards">
+                    <div class="sub-card pink-hover">
+                        <span class="sub-card-icon">👟</span>
+                        <div class="sub-card-name">سبورت</div>
+                    </div>
+                    <div class="sub-card pink-hover">
+                        <span class="sub-card-icon">🥿</span>
+                        <div class="sub-card-name">كاجوال</div>
+                    </div>
+                    <div class="sub-card pink-hover">
+                        <span class="sub-card-icon">👡</span>
+                        <div class="sub-card-name">أنيق</div>
+                    </div>
+                    <div class="sub-card pink-hover">
+                        <span class="sub-card-icon">🩴</span>
+                        <div class="sub-card-name">صيفي</div>
+                    </div>
+                    <div class="sub-card pink-hover">
+                        <span class="sub-card-icon">👢</span>
+                        <div class="sub-card-name">بوت</div>
+                    </div>
+                    <div class="sub-card pink-hover">
+                        <span class="sub-card-icon">✨</span>
+                        <div class="sub-card-name">حصري</div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:center;">
+                <span class="gender-big-icon" style="animation-delay:0s">👠</span>
+                <div style="font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:6px; color:rgba(255,100,180,0.3);">WOMEN</div>
+                <div style="font-size:13px; color:rgba(255,255,255,0.3); margin-top:8px; letter-spacing:2px;">أحذية السيدات</div>
+                <div style="margin-top:24px; padding:16px 24px; background:rgba(255,100,180,0.06); border:1px solid rgba(255,100,180,0.15); border-radius:2px;">
+                    <div style="font-size:12px; color:rgba(255,100,180,0.8); letter-spacing:2px; font-family:'Montserrat',sans-serif; font-weight:600;">أحدث الموديلات</div>
+                    <div style="font-size:13px; color:rgba(255,255,255,0.5); margin-top:6px;">بأسعار تناسب الجميع</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="gender-divider"></div>
+
+    <!-- MEN SECTION -->
+    <div class="gender-section" id="men">
+        <div class="gender-section-inner reverse">
+            <div style="text-align:center;">
+                <span class="gender-big-icon" style="animation-delay:0.5s">👟</span>
+                <div style="font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:6px; color:rgba(60,220,150,0.3);">MEN</div>
+                <div style="font-size:13px; color:rgba(255,255,255,0.3); margin-top:8px; letter-spacing:2px;">أحذية الشباب</div>
+                <div style="margin-top:24px; padding:16px 24px; background:rgba(60,220,150,0.06); border:1px solid rgba(60,220,150,0.15); border-radius:2px;">
+                    <div style="font-size:12px; color:rgba(60,220,150,0.8); letter-spacing:2px; font-family:'Montserrat',sans-serif; font-weight:600;">ستايل عصري</div>
+                    <div style="font-size:13px; color:rgba(255,255,255,0.5); margin-top:6px;">جودة عالية وأناقة</div>
+                </div>
+            </div>
+            <div class="gender-cards men-card">
+                <span class="gender-label-tag men">MEN · شبابي</span>
+                <h3 class="gender-title">قسم الشبابي 👟</h3>
+                <p class="gender-desc">
+                    أحدث صيحات أحذية الرجال والشباب من سبورت وكاجوال.
+                    تشكيلات تجمع بين الستايل العصري والراحة في المشي،
+                    مناسبة للشغل والسهرة والرياضة.
+                </p>
+                <div class="gender-sub-cards">
+                    <div class="sub-card green-hover">
+                        <span class="sub-card-icon">🏃</span>
+                        <div class="sub-card-name">ركنينج</div>
+                    </div>
+                    <div class="sub-card green-hover">
+                        <span class="sub-card-icon">👟</span>
+                        <div class="sub-card-name">سنيكرز</div>
+                    </div>
+                    <div class="sub-card green-hover">
+                        <span class="sub-card-icon">👞</span>
+                        <div class="sub-card-name">كاجوال</div>
+                    </div>
+                    <div class="sub-card green-hover">
+                        <span class="sub-card-icon">⚽</span>
+                        <div class="sub-card-name">رياضي</div>
+                    </div>
+                    <div class="sub-card green-hover">
+                        <span class="sub-card-icon">👢</span>
+                        <div class="sub-card-name">بوت</div>
+                    </div>
+                    <div class="sub-card green-hover">
+                        <span class="sub-card-icon">🔥</span>
+                        <div class="sub-card-name">تريند</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="gender-divider"></div>
+
+    <!-- KIDS SECTION -->
+    <div class="gender-section" id="kids">
+        <div class="gender-section-inner">
+            <div class="gender-cards kids-card">
+                <span class="gender-label-tag kids">KIDS · أطفال</span>
+                <h3 class="gender-title">قسم الأطفال 🧒</h3>
+                <p class="gender-desc">
+                    أحذية الأطفال المريحة والمتينة المناسبة لكل الأعمار،
+                    من المشي الأول للصغار إلى أحذية المدرسة والألعاب
+                    بتصاميم ملونة وجذابة يحبها الأطفال.
+                </p>
+                <div class="gender-sub-cards">
+                    <div class="sub-card yellow-hover">
+                        <span class="sub-card-icon">👶</span>
+                        <div class="sub-card-name">رضع</div>
+                    </div>
+                    <div class="sub-card yellow-hover">
+                        <span class="sub-card-icon">🎒</span>
+                        <div class="sub-card-name">مدرسة</div>
+                    </div>
+                    <div class="sub-card yellow-hover">
+                        <span class="sub-card-icon">⚽</span>
+                        <div class="sub-card-name">رياضي</div>
+                    </div>
+                    <div class="sub-card yellow-hover">
+                        <span class="sub-card-icon">🌈</span>
+                        <div class="sub-card-name">ملون</div>
+                    </div>
+                    <div class="sub-card yellow-hover">
+                        <span class="sub-card-icon">🩴</span>
+                        <div class="sub-card-name">صندل</div>
+                    </div>
+                    <div class="sub-card yellow-hover">
+                        <span class="sub-card-icon">⭐</span>
+                        <div class="sub-card-name">مميز</div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:center;">
+                <span class="gender-big-icon" style="animation-delay:1s">🧒</span>
+                <div style="font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:6px; color:rgba(255,200,50,0.3);">KIDS</div>
+                <div style="font-size:13px; color:rgba(255,255,255,0.3); margin-top:8px; letter-spacing:2px;">أحذية الأطفال</div>
+                <div style="margin-top:24px; padding:16px 24px; background:rgba(255,200,50,0.06); border:1px solid rgba(255,200,50,0.15); border-radius:2px;">
+                    <div style="font-size:12px; color:rgba(255,200,50,0.8); letter-spacing:2px; font-family:'Montserrat',sans-serif; font-weight:600;">آمنة ومريحة</div>
+                    <div style="font-size:13px; color:rgba(255,255,255,0.5); margin-top:6px;">لكل الأعمار والأحجام</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="glow-line"></div>
+
+    <!-- LOCATION -->
+    <div class="location-section" id="location">
+        <div class="section-header">
+            <span class="section-label">Find Us</span>
+            <h2 class="section-title">موقعنا</h2>
+        </div>
+
+        <div class="location-grid">
+            <div class="location-card" id="contact">
+                <div class="info-row">
+                    <div class="info-icon">📍</div>
+                    <div class="info-text">
+                        <div class="info-label">العنوان</div>
+                        <div class="info-value">الشرقية · مركز ههيا<br>بعد المزلقان · طريق مستشفى ههيا المركزي<br>بجوار مطعم تشيكن فاكتور</div>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">📞</div>
+                    <div class="info-text">
+                        <div class="info-label">أرقام التواصل</div>
+                        <div class="info-value">
+                            <a href="tel:01000962702" class="phone-link">01000962702</a>
+                            <a href="tel:01150275297" class="phone-link">01150275297</a>
+                            <a href="tel:01032365598" class="phone-link">01032365598</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">🕐</div>
+                    <div class="info-text">
+                        <div class="info-label">أوقات العمل</div>
+                        <div class="info-value">يومياً · من الصباح حتى المساء</div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="map-embed">
+                    <iframe src="https://www.google.com/maps?q=30.675089,31.594515&z=16&output=embed"
+                            allowfullscreen
+                            loading="lazy">
+                    </iframe>
+                    <div class="map-overlay-label">📍 DOUSA</div>
+                </div>
+                <a href="https://maps.google.com/?q=30.675089,31.594515" target="_blank" class="map-open-btn">
+                    🗺 افتح في خرائط جوجل
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="glow-line"></div>
+
+    <!-- MANAGEMENT -->
+    <div class="mgmt-section">
+        <div class="mgmt-inner">
+            <span class="mgmt-label">Store Management · إدارة المحل</span>
+            <div class="mgmt-names">
+                <div class="mgmt-person">
+                    <div class="mgmt-avatar">👤</div>
+                    <div class="mgmt-name">إبراهيم عبدالله</div>
+                    <div class="mgmt-role">MANAGEMENT</div>
+                </div>
+                <div class="mgmt-person">
+                    <div class="mgmt-avatar">👤</div>
+                    <div class="mgmt-name">محمد جلال</div>
+                    <div class="mgmt-role">MANAGEMENT</div>
+                </div>
+                <div class="mgmt-person">
+                    <div class="mgmt-avatar">👤</div>
+                    <div class="mgmt-name">عبده الأمير</div>
+                    <div class="mgmt-role">MANAGEMENT</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">دوسة</div>
+        <div class="footer-tagline">DOUSA · CASUAL & SPORT SHOES · ههيا · الشرقية</div>
+        <div class="footer-copy">© 2025 Dousa Shoes — All Rights Reserved</div>
+    </footer>
+
+    <script>
+  // Scroll progress
+  window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    document.getElementById('progress').style.width = scrolled + '%';
+  });
+
+  // Generate particles
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.cssText = `
+      left: ${Math.random() * 100}%;
+      width: ${Math.random() * 3 + 1}px;
+      height: ${Math.random() * 3 + 1}px;
+      animation-duration: ${Math.random() * 15 + 10}s;
+      animation-delay: ${Math.random() * 10}s;
+    `;
+    container.appendChild(p);
+  }
+    </script>
+
+</body>
+</html>
